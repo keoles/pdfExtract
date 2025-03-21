@@ -1,0 +1,10 @@
+Art Data Extract - Installation Instructions
+
+1. Double-click on Art_Data_Extract.dmg to mount the disk image
+2. When the disk image opens, drag the "Art Data Extract.app" to your Applications folder
+3. Eject the disk image by dragging it to the trash or right-clicking and selecting "Eject"
+4. To run the application, go to your Applications folder and double-click "Art Data Extract"
+
+Note: If you receive a security warning when trying to open the application, go to System Preferences > Security & Privacy and click "Open Anyway" to allow the application to run.
+
+Enjoy using Art Data Extract! 

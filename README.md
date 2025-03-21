@@ -1,79 +1,124 @@
 # Art Data Extract
 
-A sleek, modern dark-themed desktop application for syncing iMessages and extracting PDF attachments on macOS.
+A sleek, modern application for syncing iMessages and extracting PDF attachments.
 
-![App Screenshot](screenshot.png)
+![Screenshot](screenshot.png)
 
 ## Features
 
-- Modern, eye-friendly dark UI designed to reduce eye strain
-- Guided step-by-step process for syncing iMessages
-- Automated tool for extracting PDF attachments from iMessage conversations
-- Visual progress indicators
-- Minimal and intuitive interface
+- Dark-themed modern UI
+- Sync iMessages with iCloud
+- Extract PDF attachments from iMessage conversations
+- Save extracted PDFs to chosen location
+- User-friendly interface with clear workflow
 
-## Requirements
+## What This App Does
 
-- macOS (tested on macOS 12 Monterey and newer)
-- Python 3.8 or newer
-- Messages app with iMessage enabled and configured
+Art Data Extract is designed to help you:
+
+1. **Sync your iMessages** between your Apple devices via iCloud
+2. **Extract PDF attachments** that have been sent or received in your iMessage conversations
+3. **Organize and save** these PDFs to a location of your choice
+
+This is especially useful for artists, designers, and students who frequently receive PDF documents through iMessage and want an easy way to extract and organize them.
 
 ## Installation
 
-### Option 1: Using the Installer
+### Option 1: Download the Standalone macOS Application (Recommended)
 
-1. Download the latest release from the [Releases](https://github.com/yourusername/art-data-extract/releases) page
-2. Run the installer: `./install.command`
-3. Follow the on-screen instructions
+1. [Download the latest release](https://github.com/keoles/pdfExtract/releases) (Art_Data_Extract.dmg)
+2. Open the DMG file
+3. Drag the "Art Data Extract" application to your Applications folder
+4. Launch the application from your Applications folder
 
-### Option 2: Manual Installation
+When you first run the application, macOS may show a security warning. To allow the app to run:
+1. Go to System Preferences > Security & Privacy
+2. Click "Open Anyway" to allow the application to run
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/art-data-extract.git
-   cd art-data-extract
-   ```
+### Option 2: Clone and Run from Source
 
-2. Create a virtual environment (optional but recommended):
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows use: venv\Scripts\activate
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/keoles/pdfExtract.git
 
-3. Install required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+# Navigate to the directory
+cd pdfExtract
 
-4. Run the application:
-   ```bash
-   python messages_sync_app.py
-   ```
+# Run the installer script
+chmod +x install.command
+./install.command
+
+# Or run the app directly
+chmod +x run.command
+./run.command
+```
 
 ## Usage
 
-1. **Start the App**: Launch the application using the `run.command` script or by running `python messages_sync_app.py`
+### Syncing iMessages
 
-2. **Sync iMessages**:
-   - Click the "1: OPEN SETTINGS" button to open Messages preferences
-   - Select the "iMessage" tab
-   - Click the "Sync Now" button in the Messages preferences
-   - Wait for the sync process to complete
-   - Return to the Art Data Extract app and click "2: CONFIRM SYNC"
+1. Launch Art Data Extract
+2. The app will guide you through enabling iMessage sync with iCloud
+3. Follow the on-screen instructions to open Messages preferences and enable sync
+4. Confirm when sync is complete
 
-3. **Extract PDFs**:
-   - Once sync is confirmed, the "3: EXTRACT MY PDFs" button will be enabled
-   - Click it to launch the PDF extraction process
-   - Select the output folder for extracted PDFs
-   - Follow any additional prompts for extraction options
+### Extracting PDFs
+
+1. After syncing, click "Go to PDF Extractor"
+2. Alternatively, run the PDF extractor directly with `./launch_pdf_extractor.command`
+3. The app will analyze your messages for PDF attachments
+4. Select the PDFs you want to extract
+5. Choose an output directory
+6. Click "Extract Selected PDFs"
+
+## Building From Source
+
+### Building a Standalone macOS Application
+
+You can build your own standalone application using:
+
+```bash
+# Install py2app
+pip install py2app
+
+# Build the application
+python setup.py py2app
+
+# Create a DMG for distribution
+hdiutil create -volname "Art Data Extract" -srcfolder dist/Art\ Data\ Extract.app -ov -format UDZO Art_Data_Extract.dmg
+```
+
+## Requirements
+
+- macOS 10.14 or higher
+- Python 3.7 or higher
+- Messages app configured with iCloud
 
 ## Permissions
 
-This application requires:
+This app requires:
 - Full Disk Access (to read the Messages database)
-- Accessibility permissions (to control the Messages app)
+- Access to your Messages data
 
-You'll be prompted to grant these permissions when running the app for the first time.
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Icon created using Python Pillow library
+- PDF extraction powered by custom Python code
+
+## Project Structure
+
+- `messages_sync_app.py` - Main application file
+- `imessage_pdf_extract.py` - Core functionality for extraction
+- `imessage_pdf_extract_gui.py` - GUI implementation
+- `pdf_extractor.py` - PDF handling functions
+- `setup.py` - Build configuration for standalone app
+- `requirements.txt` - Python dependencies
+- `run.command` - macOS launch script
+- `install.command` - Installation script
 
 ## Troubleshooting
 
@@ -99,8 +144,8 @@ Logs are stored in `~/.pdf_rescue_squad/pdf_rescue.log` and can be helpful for t
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/art-data-extract.git
-cd art-data-extract
+git clone https://github.com/keoles/pdfExtract.git
+cd pdfExtract
 
 # Install development dependencies
 pip install -r requirements.txt
