@@ -1,0 +1,6 @@
+# No additional requirements needed
+# The script only uses standard libraries:
+# - subprocess
+# - time 
+pillow>=9.0.0  # For icon generation
+tkinter  # Usually comes with Python, but list it for clarity 
