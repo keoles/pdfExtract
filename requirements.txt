@@ -3,4 +3,5 @@
 # - subprocess
 # - time 
 pillow>=9.0.0  # For icon generation
-tkinter  # Usually comes with Python, but list it for clarity 
+tkinter  # Usually comes with Python, but list it for clarity
+watchdog>=2.1.9  # For development mode file watching 
